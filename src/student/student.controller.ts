@@ -17,15 +17,15 @@ export class StudentController {
   }
 
   @Post()
-  createStudent(@Body() body: CreateStudentDto): Student {
-    return this.studentService.createStudent(body);
+  createStudent(@Body() createStudentDto: CreateStudentDto): Student {
+    return this.studentService.createStudent(createStudentDto);
   }
 
   @Put(':studentId')
   updateStudent(
     @Param('studentId') studentId: string,
     @Body() body: UpdateStudentDto,
-  ): Student {
-    return this.studentService.updateStudent(body, studentId);
+  ): Student[] {
+    return this.studentService.updateStudent(studentId, body);
   }
 }

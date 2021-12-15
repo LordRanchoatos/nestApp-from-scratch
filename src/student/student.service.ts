@@ -29,14 +29,14 @@ export class StudentService {
   }
 
   updateStudent(
-    createStudentDto: CreateStudentDto,
     studentId: string,
-  ): Student {
-    let updatedStudent: Student;
+    createStudentDto: CreateStudentDto,
+  ): Student[] {
+    //let updatedStudent: Student;
 
     const updatedStudentList = this.students.map((student) => {
       if (student.id === studentId) {
-        updatedStudent = {
+        return {
           id: studentId,
           ...createStudentDto,
         };
@@ -45,7 +45,8 @@ export class StudentService {
 
     this.students = updatedStudentList;
 
-    return updatedStudent;
+    // return updatedStudent;
+    return this.students;
   }
 
   getStudentsByTeacherId(teacherId: string): Student[] {
